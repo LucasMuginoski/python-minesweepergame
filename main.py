@@ -38,7 +38,12 @@ for x in range(settings.GRID_SIZE):
     for y in range(settings.GRID_SIZE):
         cell = Cell()
         cell.create_btn_object(center_frame)
-        cell.cell_btn_objct.grid(row=x, column=y)
+        cell.cell_btn_objct.grid(
+            row=y,
+            column=x
+        )
+
+
 
 # Run the window
 root.mainloop()
