@@ -1,6 +1,7 @@
 from tkinter import *
 import settings
 import utils
+from cell import Cell
 
 root = Tk()
 # override the settings of the window
@@ -11,7 +12,7 @@ root.resizable(False, False)
 
 top_frame = Frame(
     root,
-    bg="grey", #change to black
+    bg="black", #change to black
     width=settings.WIDTH,
     height=utils.height_prct(25),
 )
@@ -19,7 +20,7 @@ top_frame.place(x=0,y=0)
 
 left_frame = Frame(
     root,
-    bg="blue", #change to black
+    bg="black", #change to black
     width=utils.width_prct(25),
     height=utils.height_prct(75),
 )
@@ -27,11 +28,17 @@ left_frame.place(x=0, y=utils.height_prct(25))
 
 center_frame = Frame(
     root,
-    bg="green", #change to black
+    bg="black", #change to black
     width=utils.width_prct(75),
     height=utils.height_prct(75),
 )
 center_frame.place(x=utils.width_prct(25), y=utils.height_prct(25))
+
+for x in range(settings.GRID_SIZE):
+    for y in range(settings.GRID_SIZE):
+        cell = Cell()
+        cell.create_btn_object(center_frame)
+        cell.cell_btn_objct.grid(row=x, column=y)
 
 # Run the window
 root.mainloop()
